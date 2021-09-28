@@ -138,7 +138,7 @@ As detailed in the workshop, training our RL model takes place on a simulated ra
 
 When training a model, keep the track on which you want to race in mind. Train on the track most similar to the final track you intend to race on. While this isn't required and doesn't guarantee a good model, it will maximize the odds that your model will get its best performance on the race track. Furthermore, if you train on a straight track, don't expect your model to learn how to turn.
 
-Scroll down and **please select the XXX track** from the Environment Simulation section. This is the track that we will use during a wualification race.
+Scroll down and **please select the AWS DeepRacer Championship Cup 2019 track** from the Environment Simulation section. This is the track that we will use during a wualification race.
 
 ![Model environment](img/create_model_1_environment_simulation.png)
 
@@ -440,7 +440,7 @@ or discussion on forum https://forums.aws.amazon.com/forum.jspa?forumID=318
 
 ## 4.7: Evaluating the performance of your model
 
-You may not have time in the workshop to do from step 2 onwards. Once your model training is complete you can start model evaluation. From your model details page, where you observed training, select **Start evaluation**. You can now select the track on which you want to evaluate the performance of your model and also the number of laps. Select the XXX track and 5 laps and select Start. 
+You may not have time in the workshop to do from step 2 onwards. Once your model training is complete you can start model evaluation. From your model details page, where you observed training, select **Start evaluation**. You can now select the track on which you want to evaluate the performance of your model and also the number of laps. Select the AWS DeepRacer Championship Cup 2019 track and 5 laps and select Start. 
 
 Once done you should see something as follows. Evaluation results will tell you how many laps your model was able to complete and how much time it takes for each lap. 
 
