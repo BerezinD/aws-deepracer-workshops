@@ -1,3 +1,6 @@
+import math
+
+
 def reward_function(params):
     track_width = params['track_width']
     distance_from_center = params['distance_from_center']
@@ -26,15 +29,15 @@ def reward_function(params):
     if distance_from_center <= marker_2:
         reward_lane *= 1.0
         ABS_STEERING_THRESHOLD = 20
-        SPEED_THRESHOLD = 2.0  # is that correct value?
+        SPEED_THRESHOLD = 2.7
     elif distance_from_center <= marker_3:
         reward_lane *= 0.9
         ABS_STEERING_THRESHOLD = 40
-        SPEED_THRESHOLD = 1.0
+        SPEED_THRESHOLD = 1.3
     elif distance_from_center <= marker_4:
         reward_lane *= 0.8
         ABS_STEERING_THRESHOLD = 60
-        SPEED_THRESHOLD = 0.5
+        SPEED_THRESHOLD = 0.6
     else:
         reward_lane *= 0.7
         ABS_STEERING_THRESHOLD = 90
@@ -61,7 +64,6 @@ def reward_function(params):
     DIRECTION_THRESHOLD = 10.0
     if direction_diff > DIRECTION_THRESHOLD:
         reward_heading *= 0.5
-        SPEED_THRESHOLD = 90
 
     # Penalize reward if the car is steering too much
     if abs(steering_angle) > ABS_STEERING_THRESHOLD:
@@ -70,14 +72,14 @@ def reward_function(params):
     reward_speed = 1.0
 
     if speed < SPEED_THRESHOLD:  # Penalize if the car goes too slow
-        reward_speed *= 0.5
+        reward_speed *= 0.35
     else:  # High reward if the car stays on track and goes fast
         reward_speed *= 1.0
 
-    reward += 1.0 * reward_lane + 1.0 * reward_heading + 0.5 * reward_speed
+    reward += reward_lane + reward_heading + 0.5 * reward_speed
 
     # give a reward at each time of the completing a lap
     if params['progress'] == 100:
-        reward += 10000
+        reward += 1000 / params["steps"]
 
     return float(reward)
